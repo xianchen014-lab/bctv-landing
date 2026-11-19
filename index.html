@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080711">
+<title>BCTV | Videos y Recompensas</title>
+<meta name="description" content="Descubre BCTV. Regístrate y conoce las recompensas para nuevos usuarios.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --gold:#ffd987;
+ --purple:#a855f7;
+ --pink:#ff4fd8;
+ --bg:#080711;
+}
+html{scroll-behavior:smooth}
+body{
+ background:var(--bg);
+ color:white;
+ font-family:Arial,Helvetica,sans-serif;
+ overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+header{
+ height:75px;padding:0 7%;
+ display:flex;align-items:center;
+ justify-content:space-between;
+ background:rgba(8,7,17,.94);
+ border-bottom:1px solid #ffffff18;
+ position:relative;z-index:5;
+}
+.logo{
+ font-size:32px;font-weight:1000;
+ letter-spacing:4px;
+ background:linear-gradient(90deg,#fff,var(--gold),#b77aff);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+.nav{font-size:11px;letter-spacing:3px;color:#aaa}
+.hero{
+ min-height:690px;
+ display:flex;align-items:center;
+ padding:90px 9%;
+ position:relative;
+ background:
+ linear-gradient(90deg,#080711 5%,#080711d9 45%,#08071135),
+ url("https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=2000&q=90")
+ center/cover;
+}
+.hero:after{
+ content:"";position:absolute;
+ width:400px;height:400px;
+ background:#8b35ff33;
+ filter:blur(100px);
+ right:5%;top:20%;
+ pointer-events:none;
+}
+.hero-content{max-width:720px;position:relative;z-index:2}
+.eyebrow{
+ color:var(--gold);letter-spacing:5px;
+ font-size:12px;margin-bottom:25px;
+}
+h1{
+ font-size:clamp(48px,8vw,94px);
+ line-height:.98;font-weight:1000;
+ letter-spacing:-4px;
+}
+h1 span{
+ background:linear-gradient(90deg,#ffe8a6,#b77aff,#ff5edb);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+.hero p{
+ margin:30px 0;color:#d4cede;
+ font-size:17px;line-height:1.9;
+ max-width:550px;
+}
+.btn{
+ display:inline-block;padding:18px 36px;
+ background:linear-gradient(100deg,#ffe7a3,#d9a747);
+ color:#16101a;font-weight:900;
+ font-size:14px;letter-spacing:2px;
+ border-radius:5px;
+ box-shadow:0 0 35px #f7d68a33;
+ transition:.3s;
+}
+.btn:hover{transform:translateY(-5px);box-shadow:0 0 40px #f7d68a88}
+.section{padding:100px 8%;text-align:center}
+.kicker{
+ color:#b77aff;font-size:11px;
+ letter-spacing:5px;margin-bottom:20px;
+}
+h2{
+ font-size:clamp(32px,5vw,55px);
+ font-weight:900;letter-spacing:-2px;
+}
+h2 span{color:var(--gold)}
+.desc{
+ color:#aaa6ba;line-height:1.9;
+ margin:20px auto 55px;max-width:650px;
+}
+.benefits{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:25px;max-width:1050px;margin:auto;
+ text-align:left;
+}
+.benefit{
+ padding:38px;
+ min-height:310px;
+ border:1px solid #ffffff20;
+ border-radius:14px;
+ background:
+ radial-gradient(circle at 90% 10%,#a855f744,transparent 40%),
+ linear-gradient(145deg,#191525,#0e0c18);
+ position:relative;overflow:hidden;
+ transition:.4s;
+}
+.benefit:hover{
+ transform:translateY(-8px);
+ border-color:#b77aff99;
+}
+.benefit .number{
+ font-size:clamp(48px,7vw,75px);
+ font-weight:1000;letter-spacing:-3px;
+ color:var(--gold);margin:25px 0 12px;
+}
+.benefit h3{font-size:20px;letter-spacing:1px}
+.benefit p{color:#aaa6ba;line-height:1.8;font-size:14px}
+.icon{font-size:32px}
+.daily{
+ background:
+ linear-gradient(#0a0914e8,#0a0914f5),
+ url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=85")
+ center/cover;
+}
+.days{
+ display:grid;grid-template-columns:repeat(7,1fr);
+ gap:10px;max-width:1100px;margin:50px auto 30px;
+}
+.day{
+ padding:24px 5px;
+ background:#ffffff09;
+ border:1px solid #b77aff66;
+ border-radius:9px;
+ backdrop-filter:blur(10px);
+}
+.day strong{
+ display:block;color:var(--gold);
+ font-size:22px;margin-bottom:13px;
+}
+.day small{font-size:12px;color:#ddd}
+.total{
+ display:inline-block;
+ margin-top:25px;padding:20px 35px;
+ border:1px solid var(--gold);
+ color:var(--gold);font-size:22px;
+ font-weight:900;letter-spacing:2px;
+}
+.visual{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:50px;align-items:center;
+ text-align:left;max-width:1100px;margin:auto;
+}
+.visual img{
+ width:100%;height:400px;object-fit:cover;
+ border-radius:12px;
+ filter:saturate(.85);
+}
+.visual p{
+ color:#aaa6ba;line-height:2;margin:25px 0;
+}
+.gallery{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:18px;max-width:1100px;margin:auto;
+}
+.gallery img{
+ width:100%;height:230px;object-fit:cover;
+ border-radius:10px;transition:.4s;
+}
+.gallery img:hover{transform:scale(1.03)}
+.gallery h3{
+ padding:18px;color:var(--gold);
+ font-size:15px;letter-spacing:2px;
+}
+.final{
+ padding:120px 8%;text-align:center;
+ background:
+ linear-gradient(#080711b9,#080711f5),
+ url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1800&q=85")
+ center/cover;
+}
+.final h2{margin-bottom:25px}
+.final p{color:#bbb;margin-bottom:35px;line-height:1.8}
+footer{
+ text-align:center;padding:40px 6%;
+ background:#05040a;color:#777;
+ font-size:12px;line-height:2.2;
+}
+footer .logo{margin-bottom:12px}
+.float-btn{
+ position:fixed;bottom:20px;right:20px;
+ z-index:10;
+ background:linear-gradient(110deg,#ffe7a3,#d9a747);
+ color:#17100a;font-weight:900;
+ padding:15px 22px;border-radius:40px;
+ box-shadow:0 5px 30px #0008;
+ font-size:12px;
+}
+@media(max-width:750px){
+ header{height:65px;padding:0 5%}
+ .nav{font-size:9px;letter-spacing:1px}
+ .hero{min-height:610px;padding:75px 7%}
+ h1{letter-spacing:-2px}
+ .section{padding:75px 6%}
+ .benefits{grid-template-columns:1fr}
+ .days{grid-template-columns:repeat(2,1fr)}
+ .visual{grid-template-columns:1fr}
+ .visual img{height:280px}
+ .gallery{grid-template-columns:1fr}
+ .gallery img{height:220px}
+ .float-btn{bottom:12px;right:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">BCTV.</div>
+ <div class="nav">THE FUTURE OF ENTERTAINMENT</div>
+</header>
+
+<section class="hero">
+ <div class="hero-content">
+  <div class="eyebrow">WELCOME TO THE BCTV EXPERIENCE</div>
+  <h1>WATCH MORE.<br>ENJOY MORE.<br><span>GET REWARDS.</span></h1>
+  <p>
+   Descubre una nueva forma de disfrutar videos.
+   Regístrate en BCTV y conoce los beneficios
+   especiales para nuevos usuarios.
+  </p>
+  <a href="http://bnslduuio888823.com/" class="btn">
+   DESCARGAR BCTV →
+  </a>
+ </div>
+</section>
+
+<section class="section">
+ <div class="kicker">EXCLUSIVE BENEFITS</div>
+ <h2>YOUR REWARDS.<br><span>YOUR EXPERIENCE.</span></h2>
+ <p class="desc">
+  Tu experiencia BCTV comienza con beneficios especiales.
+  Descubre las recompensas disponibles.
+ </p>
+
+ <div class="benefits">
+  <div class="benefit">
+   <div class="icon">✦ 🎁</div>
+   <div class="number">500</div>
+   <h3>WELCOME BONUS</h3>
+   <p>
+    PUNTOS DE BIENVENIDA.
+    Regístrate como nuevo usuario y recibe
+    500 puntos de bienvenida, según las
+    condiciones de la promoción.
+   </p>
+  </div>
+
+  <div class="benefit">
+   <div class="icon">✦ 🔥</div>
+   <div class="number">1.000</div>
+   <h3>DAILY REWARDS</h3>
+   <p>
+    PUNTOS CADA DÍA.
+    Inicia sesión durante 7 días consecutivos
+    y recibe 1.000 puntos diarios si cumples
+    los requisitos de la actividad.
+   </p>
+  </div>
+ </div>
+</section>
+
+<section class="section daily">
+ <div class="kicker">7 DAYS CHALLENGE</div>
+ <h2>7 DAYS. <span>7 REWARDS.</span></h2>
+ <p class="desc">
+  Mantén tu actividad diaria y descubre
+  las recompensas de cada día.
+ </p>
+
+ <div class="days">
+  <div class="day"><strong>01</strong><small>1.000 PTS</small></div>
+  <div class="day"><strong>02</strong><small>1.000 PTS</small></div>
+  <div class="day"><strong>03</strong><small>1.000 PTS</small></div>
+  <div class="day"><strong>04</strong><small>1.000 PTS</small></div>
+  <div class="day"><strong>05</strong><small>1.000 PTS</small></div>
+  <div class="day"><strong>06</strong><small>1.000 PTS</small></div>
+  <div class="day"><strong>07</strong><small>1.000 PTS</small></div>
+ </div>
+
+ <div class="total">7.000 PUNTOS EN TOTAL</div>
+</section>
+
+<section class="section">
+ <div class="visual">
+  <div>
+   <div class="kicker">ENTERTAINMENT REDEFINED</div>
+   <h2>WELCOME TO<br><span>BCTV WORLD.</span></h2>
+   <p>
+    Explora contenido, descubre nuevas historias
+    y disfruta de una experiencia digital diseñada
+    para acompañarte en cualquier momento.
+   </p>
+   <a href="http://bnslduuio888823.com/" class="btn">
+    DESCARGAR APP →
+   </a>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1000&q=85" alt="Experiencia de cine">
+ </div>
+</section>
+
+<section class="section">
+ <div class="kicker">DISCOVER MORE</div>
+ <h2>EXPLORE THE <span>EXPERIENCE.</span></h2>
+ <p class="desc">
+  Entretenimiento y experiencias digitales en un solo lugar.
+ </p>
+
+ <div class="gallery">
+  <div>
+   <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=85" alt="Cine">
+   <h3>FILM & STORIES</h3>
+  </div>
+  <div>
+   <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=85" alt="Entretenimiento">
+   <h3>ENTERTAINMENT</h3>
+  </div>
+  <div>
+   <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" alt="Tecnología">
+   <h3>DIGITAL WORLD</h3>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="kicker">YOUR NEXT EXPERIENCE STARTS HERE</div>
+ <h2>READY FOR <span>BCTV?</span></h2>
+ <p>
+  Descarga BCTV, crea tu cuenta y descubre
+  nuestros beneficios para nuevos usuarios.
+ </p>
+ <a href="http://bnslduuio888823.com/" class="btn">
+  DESCARGAR BCTV NOW →
+ </a>
+</section>
+
+<footer>
+ <div class="logo">BCTV.</div>
+ <p>ENTERTAINMENT WITHOUT LIMITS.</p>
+ <p>© 2026 BCTV. Todos los derechos reservados.</p>
+ <p>Las recompensas están sujetas a los términos y condiciones oficiales.</p>
+</footer>
+
+<a class="float-btn" href="http://bnslduuio888823.com/">
+ DESCARGAR BCTV
+</a>
+
+</body>
+</html>
