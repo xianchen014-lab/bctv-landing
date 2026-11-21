@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b29">
+<title>BCTV | Videos y Recompensas</title>
+<meta name="description" content="Disfruta videos y descubre las recompensas de BCTV.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#100b29;
+  --panel:#211a40;
+  --gold:#ffcf58;
+  --muted:#d0c9df;
+}
+body{
+  background:radial-gradient(ellipse at top,#38205b 0%,#100b29 55%);
+  color:white;
+  font-family:Arial,sans-serif;
+}
+.container{max-width:1180px;margin:auto;padding:20px}
+header{
+  display:flex;justify-content:space-between;
+  align-items:center;padding:15px 0 25px
+}
+.logo{
+  color:var(--gold);font-size:38px;
+  font-weight:900;letter-spacing:4px;
+  text-shadow:0 0 22px #ffcf5860
+}
+.header-tag{
+  background:#32264f;border:1px solid #70528d;
+  padding:9px 15px;border-radius:30px;
+  color:#ffdf85;font-size:12px
+}
+.hero{
+  text-align:center;max-width:850px;
+  margin:auto;padding:40px 10px
+}
+.hero-label{
+  display:inline-block;background:#382758;
+  color:#ffdf85;border-radius:30px;
+  padding:10px 18px;font-size:13px;margin-bottom:22px
+}
+.hero h1{
+  font-size:clamp(35px,5vw,58px);
+  line-height:1.2;margin-bottom:18px
+}
+.hero h1 span{color:var(--gold)}
+.hero p{
+  color:var(--muted);font-size:16px;line-height:1.9
+}
+
+/* CSS原创主视觉，不使用外部图片 */
+.hero-art{
+  height:300px;margin:30px 0;
+  border-radius:25px;overflow:hidden;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 45%,#a34dff 0%,transparent 25%),
+    radial-gradient(circle at 20% 80%,#ff9c32 0%,transparent 30%),
+    linear-gradient(135deg,#211044,#522a83,#17102f);
+  border:1px solid #7951a0;
+  box-shadow:0 20px 50px #0006;
+}
+.hero-art:before,.hero-art:after{
+  content:"";position:absolute;border:1px solid #ffffff30;
+  border-radius:50%;width:260px;height:260px;
+}
+.hero-art:after{width:350px;height:350px}
+.hero-art-content{position:relative;z-index:2;text-align:center}
+.hero-play{
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,#ffe68a,#ff9c28);
+  color:#321a35;display:grid;place-items:center;
+  font-size:40px;margin:auto auto 18px;
+  box-shadow:0 0 40px #ffcb5580;
+}
+.hero-art-content strong{
+  font-size:30px;letter-spacing:5px;color:#fff
+}
+.hero-art-content p{font-size:13px;margin-top:10px;color:#f1ddff}
+
+.button{
+  display:block;max-width:460px;width:100%;
+  background:linear-gradient(90deg,#ffdf70,#ff9825);
+  color:#321a35;text-decoration:none;text-align:center;
+  padding:19px 15px;border-radius:40px;
+  font-size:18px;font-weight:900;
+  margin:26px auto;box-shadow:0 8px 30px #ffae3650;
+  transition:.2s
+}
+.button:hover{transform:translateY(-3px)}
+.section-title{
+  font-size:27px;margin:42px 0 22px;
+  padding-left:13px;border-left:4px solid var(--gold)
+}
+.card{
+  background:var(--panel);border:1px solid #493765;
+  border-radius:20px;overflow:hidden;margin-bottom:20px
+}
+.card-content{padding:23px}
+.card h3{font-size:21px;color:var(--gold);margin-bottom:13px}
+.card p{color:var(--muted);font-size:14px;line-height:1.9}
+.number{
+  font-size:38px;font-weight:900;
+  color:#ffdf85;margin:15px 0
+}
+.day{
+  display:flex;justify-content:space-between;
+  align-items:center;padding:15px;margin-top:10px;
+  background:#30254d;border-radius:12px
+}
+.day strong{color:var(--gold);font-size:17px}
+
+/* 9 tarjetas originales, creadas con CSS */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px
+}
+.video-card{
+  background:#211a40;border:1px solid #493765;
+  border-radius:19px;overflow:hidden;
+  transition:.25s
+}
+.video-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--gold)
+}
+.visual{
+  height:220px;position:relative;
+  display:flex;align-items:center;
+  justify-content:center;overflow:hidden
+}
+.visual:before{
+  content:"";position:absolute;
+  width:180px;height:180px;border-radius:50%;
+  border:1px solid #ffffff35;
+}
+.visual:after{
+  content:"";position:absolute;
+  width:230px;height:230px;border-radius:50%;
+  border:1px solid #ffffff25;
+}
+.visual-symbol{
+  position:relative;z-index:2;
+  font-size:75px;
+  filter:drop-shadow(0 8px 16px #0006)
+}
+.visual-label{
+  position:absolute;z-index:3;
+  bottom:17px;left:17px;
+  font-size:11px;letter-spacing:2px;
+  color:#fff;background:#100b2980;
+  border:1px solid #ffffff35;
+  padding:7px 11px;border-radius:20px
+}
+.v1{background:radial-gradient(circle at 50% 40%,#ffb54c,#8e316e 45%,#25103f)}
+.v2{background:radial-gradient(circle at 50% 40%,#a65cff,#392078 50%,#130d2e)}
+.v3{background:radial-gradient(circle at 50% 40%,#ff6b9e,#7b286d 48%,#24103c)}
+.v4{background:radial-gradient(circle at 50% 40%,#ffbd56,#9a4a24 48%,#29102f)}
+.v5{background:radial-gradient(circle at 50% 40%,#55c8ff,#244d9c 48%,#130d2e)}
+.v6{background:radial-gradient(circle at 50% 40%,#8eebbd,#287c70 48%,#102c3d)}
+.v7{background:radial-gradient(circle at 50% 40%,#ffdb70,#9a5a32 48%,#2c153c)}
+.v8{background:radial-gradient(circle at 50% 40%,#ff79d2,#803c9e 48%,#211039)}
+.v9{background:radial-gradient(circle at 50% 40%,#70aaff,#394c9d 48%,#130d2e)}
+
+.video-card-content{padding:19px}
+.video-tag{
+  display:inline-block;background:#382758;
+  color:#ffdf85;padding:7px 11px;
+  border-radius:20px;font-size:11px;margin-bottom:13px
+}
+.video-card h3{color:var(--gold);font-size:18px;margin-bottom:10px}
+.video-card p{color:var(--muted);font-size:13px;line-height:1.8}
+
+.total{
+  text-align:center;
+  background:linear-gradient(135deg,#7242a5,#32205d);
+  padding:35px 15px;border:1px solid #9870c5;
+  border-radius:22px;margin:40px 0
+}
+.total h2{font-size:17px}
+.total strong{
+  display:block;font-size:48px;
+  color:#ffdf85;margin:15px 0
+}
+.total p{font-size:13px;color:#e3d7f4}
+.exchange{
+  background:var(--panel);border:1px solid #493765;
+  border-radius:20px;padding:25px;margin:25px 0
+}
+.exchange h3{color:var(--gold);font-size:21px;margin-bottom:15px}
+.exchange p{color:var(--muted);font-size:14px;line-height:2}
+footer{
+  text-align:center;padding:35px 10px;
+  color:#a99dbd;font-size:12px;line-height:2;
+  border-top:1px solid #493765;margin-top:35px
+}
+@media(max-width:800px){
+  .video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+  .visual{height:190px}
+}
+@media(max-width:480px){
+  .container{padding:14px}
+  .logo{font-size:31px}
+  .hero{padding-top:25px}
+  .hero h1{font-size:34px}
+  .hero p{font-size:14px}
+  .hero-art{height:230px}
+  .section-title{font-size:23px}
+  .video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .visual{height:145px}
+  .visual-symbol{font-size:55px}
+  .video-card-content{padding:12px}
+  .video-card h3{font-size:15px}
+  .video-card p{font-size:12px}
+  .total strong{font-size:36px}
+  .day{padding:13px 10px}
+  .day strong{font-size:14px}
+}
+@media(max-width:340px){
+  .video-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">BCTV</div>
+  <div class="header-tag">🎬 VIDEOS Y PREMIOS</div>
+</header>
+
+<section class="hero">
+  <div class="hero-label">🎁 PROMOCIÓN PARA NUEVOS USUARIOS</div>
+
+  <h1>¡Disfruta videos y <span>gana puntos!</span></h1>
+
+  <p>
+    Descubre videos increíbles, disfruta de contenido
+    entretenido y conoce las recompensas disponibles en BCTV.
+  </p>
+
+  <div class="hero-art">
+    <div class="hero-art-content">
+      <div class="hero-play">▶</div>
+      <strong>BCTV</strong>
+      <p>VIDEOS · ENTRETENIMIENTO · PREMIOS</p>
+    </div>
+  </div>
+
+  <a class="button" href="http://bnslduuio888823.com/"
+  target="_blank" rel="noopener noreferrer">
+    📲 DESCARGAR BCTV AHORA
+  </a>
+</section>
+
+<h2 class="section-title">🎁 Bono de bienvenida</h2>
+
+<div class="card">
+  <div class="card-content">
+    <h3>🎉 ¡500 puntos para nuevos usuarios!</h3>
+    <div class="number">500 PUNTOS</div>
+    <p>
+      Regístrate en BCTV y consulta cómo reclamar
+      tu recompensa de bienvenida.
+    </p>
+  </div>
+</div>
+
+<a class="button" href="http://bnslduuio888823.com/"
+target="_blank" rel="noopener noreferrer">
+  📲 REGISTRARME AHORA
+</a>
+
+<h2 class="section-title">🔥 Recompensas por 7 días</h2>
+
+<div class="card">
+  <div class="card-content">
+    <h3>¡Inicia sesión durante 7 días!</h3>
+    <p>Consulta las recompensas diarias disponibles durante la promoción.</p>
+
+    <div class="day"><span>DÍA 1</span><strong>+1000 PUNTOS</strong></div>
+    <div class="day"><span>DÍA 2</span><strong>+1000 PUNTOS</strong></div>
+    <div class="day"><span>DÍA 3</span><strong>+1000 PUNTOS</strong></div>
+    <div class="day"><span>DÍA 4</span><strong>+1000 PUNTOS</strong></div>
+    <div class="day"><span>DÍA 5</span><strong>+1000 PUNTOS</strong></div>
+    <div class="day"><span>DÍA 6</span><strong>+1000 PUNTOS</strong></div>
+    <div class="day"><span>DÍA 7</span><strong>+1000 PUNTOS</strong></div>
+  </div>
+</div>
+
+<h2 class="section-title">🎬 Descubre el mundo BCTV</h2>
+
+<div class="video-grid">
+
+  <div class="video-card">
+    <div class="visual v1">
+      <div class="visual-symbol">🎵</div>
+      <div class="visual-label">MÚSICA</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">MÚSICA</span>
+      <h3>Música y conciertos</h3>
+      <p>Disfruta videos musicales y momentos llenos de ritmo.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v2">
+      <div class="visual-symbol">🎬</div>
+      <div class="visual-label">CINE</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">CINE</span>
+      <h3>Historias y cortos</h3>
+      <p>Descubre historias entretenidas y contenido audiovisual.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v3">
+      <div class="visual-symbol">💃</div>
+      <div class="visual-label">BAILE</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">BAILE</span>
+      <h3>Baile y tendencias</h3>
+      <p>Conoce videos de baile y tendencias populares.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v4">
+      <div class="visual-symbol">🍔</div>
+      <div class="visual-label">COCINA</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">COCINA</span>
+      <h3>Comida y recetas</h3>
+      <p>Explora videos de comida, recetas e ideas deliciosas.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v5">
+      <div class="visual-symbol">🎮</div>
+      <div class="visual-label">GAMING</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">GAMING</span>
+      <h3>Juegos y diversión</h3>
+      <p>Disfruta contenido de videojuegos y entretenimiento digital.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v6">
+      <div class="visual-symbol">⭐</div>
+      <div class="visual-label">CREADORES</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">CREADORES</span>
+      <h3>Creadores y talentos</h3>
+      <p>Descubre personas creativas y videos originales.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v7">
+      <div class="visual-symbol">🌟</div>
+      <div class="visual-label">ESTILO DE VIDA</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">ESTILO DE VIDA</span>
+      <h3>Vida y momentos</h3>
+      <p>Encuentra ideas y experiencias para compartir.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v8">
+      <div class="visual-symbol">🎤</div>
+      <div class="visual-label">ENTRETENIMIENTO</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">ENTRETENIMIENTO</span>
+      <h3>Diversión sin límites</h3>
+      <p>Disfruta contenido variado para tus momentos libres.</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="visual v9">
+      <div class="visual-symbol">📱</div>
+      <div class="visual-label">VIDEOS</div>
+    </div>
+    <div class="video-card-content">
+      <span class="video-tag">VIDEOS</span>
+      <h3>Videos en tu móvil</h3>
+      <p>Descubre contenido desde tu teléfono y disfruta donde quieras.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="total">
+  <h2>🎉 TOTAL DE RECOMPENSAS POTENCIALES</h2>
+  <strong>7.500 PUNTOS</strong>
+  <p>500 de bienvenida + 7.000 por 7 días</p>
+</div>
+
+<div class="exchange">
+  <h3>💰 ¿Cómo participar?</h3>
+  <p>
+    1. Descarga BCTV.<br>
+    2. Registra tu cuenta.<br>
+    3. Consulta y reclama tus puntos.<br>
+    4. Revisa las condiciones de canje.
+  </p>
+</div>
+
+<a class="button" href="http://bnslduuio888823.com/"
+target="_blank" rel="noopener noreferrer">
+  🚀 DESCARGAR BCTV Y PARTICIPAR
+</a>
+
+<footer>
+  BCTV - Videos y entretenimiento.<br>
+  Las promociones están sujetas a los términos
+  y condiciones oficiales de la plataforma.<br>
+  Consulta los requisitos de participación
+  y canje antes de reclamar recompensas.<br>
+  © 2026 BCTV. Todos los derechos reservados.
+</footer>
+
+</div>
+</body>
+</html>
